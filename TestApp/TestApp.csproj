@@ -53,6 +53,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Resources\mapp_vsd_sred-slot0.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\mapp_vsd_sred-slot8.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\mapp_vsd_sred.cfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

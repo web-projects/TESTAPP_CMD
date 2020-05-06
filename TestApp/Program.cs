@@ -32,15 +32,21 @@ namespace TestApp
 
             //TestDecryptor();
 
-            GetSlotNumber();
+            // SLOT 0
+            int slot0 = GetSlotNumber(0);
+
+            // SLOT 8
+            int slot8 = GetSlotNumber(8);
+
+            Console.ReadKey();
         }
 
-        static void GetSlotNumber()
+        static int GetSlotNumber(int slot)
         {
             ProcessFile fp = new ProcessFile();
-            int slot = fp.GetSlotNumber();
-            Console.WriteLine($"SRED SLOT={slot}");
-            Console.ReadKey();
+            int result = fp.GetSlotNumber(slot);
+            Console.WriteLine($"FOR REQUESTED SLOT#{slot} - MAPP_VSD_SRED.CFG SLOT={slot}");
+            return result;
         }
 
         static void TestDecryptor()

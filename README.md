@@ -31,3 +31,4 @@ This is an application to test command line items.
 ### HISTORY ###
 
 * 20200505 - Initial repository.
+* 20200506 - Added multiple slot check.
