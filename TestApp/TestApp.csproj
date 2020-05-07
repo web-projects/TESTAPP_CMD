@@ -46,8 +46,11 @@
     <Compile Include="FileIO\ProcessFile.cs" />
     <Compile Include="Hashing\HMACHash.cs" />
     <Compile Include="Hashing\HMACValidator.cs" />
+    <Compile Include="Helpers\DeviceKeys.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings\VipaStatusCodes.cs" />
     <Compile Include="TestUnit.cs" />
   </ItemGroup>
   <ItemGroup>

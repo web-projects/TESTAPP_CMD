@@ -5,22 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TestApp.FileIO;
 using TestApp.Hashing;
+using TestApp.Helpers;
+using TestApp.Strings;
 
 namespace TestApp
 {
     class Program
     {
-        public enum DeviceKeys
-        {
-            KEY_STOP = 0x1b,
-            KEY_CANCEL = 0x0b,
-            KEY_CORR = 0x08,
-            KEY_INFO = 0x8c,
-            KEY_OK = 0x0d,
-            KEY_UP = 0x86,
-            KEY_DOWN = 0x88
-        };
-
         static void Main(string[] args)
         {
             //IsNullTest();
@@ -31,6 +22,11 @@ namespace TestApp
             //RunTaskDemo().Wait();
 
             //TestDecryptor();
+
+            // ENUMS TEST
+            int result = 0x9F13;
+            VipaSW1SW2Codes code = (VipaSW1SW2Codes) result;
+            Console.WriteLine($"VIPA ERROR={code.GetStringValue()}");
 
             // SLOT 0
             int slot0 = GetSlotNumber(0);

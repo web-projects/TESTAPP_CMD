@@ -32,3 +32,4 @@ This is an application to test command line items.
 
 * 20200505 - Initial repository.
 * 20200506 - Added multiple slot check.
+* 20200507 - Added enum string display.
