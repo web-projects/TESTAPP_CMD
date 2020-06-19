@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using TestApp.Dictionary;
 using TestApp.FileIO;
 using TestApp.Hashing;
 using TestApp.Helpers;
@@ -24,17 +26,20 @@ namespace TestApp
             //TestDecryptor();
 
             // ENUMS TEST
-            int result = 0x9F13;
-            VipaSW1SW2Codes code = (VipaSW1SW2Codes) result;
-            Console.WriteLine($"VIPA ERROR={code.GetStringValue()}");
+            //int result = 0x9F13;
+            //VipaSW1SW2Codes code = (VipaSW1SW2Codes) result;
+            //Console.WriteLine($"VIPA ERROR={code.GetStringValue()}");
 
             // SLOT 0
-            int slot0 = GetSlotNumber(0);
+            //int slot0 = GetSlotNumber(0);
 
             // SLOT 8
-            int slot8 = GetSlotNumber(8);
+            //int slot8 = GetSlotNumber(8);
 
-            Console.ReadKey();
+            //Console.ReadKey();
+
+            string paymentType = TestTuples("A0000000031010");
+            Console.WriteLine($"PAYMENT TYPE='{paymentType}'");
         }
 
         static int GetSlotNumber(int slot)
@@ -157,6 +162,37 @@ namespace TestApp
             });
             await Task.Delay(5000);
             Console.WriteLine("Exiting after 5 second delay");
+        }
+
+        private static string TestTuples(string paymentAID)
+        {
+            string transactionType = string.Empty;
+            var elements = AidList.aidList.Select(x => x).Where(y => y.Key.Equals(AidList.CATEGORY_FIRSTDATA));
+            foreach (var element in elements)
+            {
+                if (element.Value.cashbackAid.aidList.Any(x => x.Contains(paymentAID)))
+                {
+                    transactionType = element.Value.cashbackAid.transactionType;
+                    break;
+                }
+                else if (element.Value.creditAid.aidList.Any(x => x.Contains(paymentAID)))
+                {
+                    transactionType = element.Value.creditAid.transactionType;
+                    break;
+                }
+                else if (element.Value.debitAid.aidList.Any(x => x.Contains(paymentAID)))
+                {
+                    transactionType = element.Value.debitAid.transactionType;
+                    break;
+                }
+                if (element.Value.mastercardAid.aidList.Any(x => x.Contains(paymentAID)))
+                {
+                    transactionType = element.Value.mastercardAid.transactionType;
+                    break;
+                }
+            }
+
+            return transactionType;
         }
     }
 
