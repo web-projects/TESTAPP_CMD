@@ -34,3 +34,4 @@ This is an application to test command line items.
 * 20200506 - Added multiple slot check.
 * 20200507 - Added enum string display.
 * 20200618 - Added Dictionary with Tuple and Lookup
+* 20201006 - Clean up in search of MACPrimaryKeyHASH
